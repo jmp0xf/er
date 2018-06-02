@@ -50,6 +50,10 @@ function topFunction() {
 {{ $headers := findRE "<h[1-6].*?>(.|\n])+?</h[1-6]>" .Content }}
 {{ $has_headers := ge (len $headers) 1 }}
 {{ if and $has_headers (ne .Params.toc false) }}
+for (let num = 1; num <= 6; num++) {
+  const headers = document.querySelectorAll('.post-content>h' + num)
+  for (let i = 0; i < headers.length; i++) headers[i].id = encodeURIComponent(headers[i].id)
+}
 if (document.getElementById("contents-list") !== null && document.getElementsByClassName("post-content").length !== 0) { 
   tocbot.init({
     // Where to render the table of contents.
