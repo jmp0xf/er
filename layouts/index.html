@@ -6,7 +6,7 @@
     <li class="mb2">
       <a class="f4 heading-color heading-font fw6 no-underline" href="{{ .Permalink }}">{{ .Title }}</a>
       <p class="f5 mt1 silver">
-        <time>{{ .Date.Format "02 Jan 2006" }}</time>
+        <time>{{ .Date.Format (.Site.Params.dateFormatToUse | default "2006-01-02") }}</time>
         {{ if or .Params.tags .Params.categories }} | {{ end }}
         {{ if isset .Params "categories" }}
         categories: [ {{ range .Params.categories }}<a href='{{ "/categories/" | relLangURL }}{{ . | urlize }}' class="link silver">{{ . }}</a> {{ end }} ]
