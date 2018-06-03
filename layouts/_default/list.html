@@ -1,6 +1,12 @@
+{{ define "title" }}
+    <title>{{ .Site.Data.er.default.archive }} - {{ .Site.Title }}</title>
+    <meta content='{{ .Site.Data.er.default.archive }}  - {{ .Site.Title }}' property='title' />
+    <meta content='{{ .Site.Data.er.default.archive }}  - {{ .Site.Title }}' property='og:title' />
+{{ end }}
+
 {{ define "main" }}
 <main class="center mv4 content-width ph3">
-  <h1 class="f2 fw6 heading-font">{{ .Title }}</h1>
+  <h1 class="f2 fw6 heading-font">{{ .Site.Data.er.default.archive }}</h1>
   {{ .Content }}
   <ul class="list-pages">
     {{ range .Data.Pages }}

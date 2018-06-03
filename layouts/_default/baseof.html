@@ -1,6 +1,19 @@
 <!doctype html>
 <html lang="{{ $.Site.LanguageCode | default "en" }}">
-<head>{{ partial "header.html" . }}</head>
+<head>
+  {{- block "title" . -}}
+    {{ if .IsHome }}
+      <title>{{ .Site.Title }}</title>
+      <meta content='{{ .Title }}' property='title' />
+      <meta content='{{ .Title }}' property='og:title' />
+    {{ else }}
+        <title>{{ .Title }} - {{ .Site.Title }}</title>
+        <meta content='{{ .Title }} - {{ .Site.Title }}' property='title' />
+        <meta content='{{ .Title }} - {{ .Site.Title }}' property='og:title' />
+    {{ end }}
+  {{- end -}}
+  {{ partial "header.html" . }}
+</head>
 <body class="global-font">
   {{ partial "nav.html" . }}
   {{ block "main" . }}{{ end }}
