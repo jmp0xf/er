@@ -7,6 +7,7 @@
       <a class="f4 heading-color heading-font fw6 no-underline" href="{{ .Permalink }}">{{ .Title }}</a>
       <p class="f5 mt1 silver">
         <time>{{ .Date.Format (.Site.Params.dateFormatToUse | default "2006-01-02") }}</time>
+        <span>| {{.WordCount}} 字</span>
         {{ if .Params.categories }} | &nbsp; {{ end }}
         {{ if isset .Params "categories" }}
           {{ range .Params.categories }}<a href='{{ "/categories/" | relLangURL }}{{ . | urlize }}' class="link silver">{{ . }}</a> {{ end }}
