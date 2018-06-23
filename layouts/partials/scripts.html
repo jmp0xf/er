@@ -50,6 +50,7 @@ function topFunction() {
 {{ $headers := findRE "<h[1-6].*?>(.|\n])+?</h[1-6]>" .Content }}
 {{ $has_headers := ge (len $headers) 1 }}
 {{ if and $has_headers (ne .Params.toc false) }}
+{{ $depth:= .Params.tocCollapseDepth | default 4 -}}
 for (let num = 1; num <= 6; num++) {
   const headers = document.querySelectorAll('.post-content>h' + num)
   for (let i = 0; i < headers.length; i++) headers[i].id = encodeURIComponent(headers[i].id)
@@ -62,7 +63,7 @@ if (document.getElementById("contents-list") !== null && document.getElementsByC
     contentSelector: '.post-content',
     // Which headings to grab inside of the contentSelector element.
     headingSelector: 'h1, h2, h3, h4, h5, h6',
-    collapseDepth: 4,
+    collapseDepth: {{ $depth }},
   });
 }
 {{ end }}
