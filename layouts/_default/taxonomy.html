@@ -1,12 +1,12 @@
 {{ define "title" }}
-    <title>{{.Title}} - {{ .Site.Data.er.default.tags }} - {{ .Site.Title }}</title>
-    <meta content='{{.Title}} - {{ .Site.Data.er.default.tags }}  - {{ .Site.Title }}' property='title' />
-    <meta content='{{.Title}} - {{ .Site.Data.er.default.tags }}  - {{ .Site.Title }}' property='og:title' />
+    <title>{{.Title}} - {{ .Site.Data.er.default.categories }} - {{ .Site.Title }}</title>
+    <meta content='{{.Title}} - {{ .Site.Data.er.default.categories }}  - {{ .Site.Title }}' property='title' />
+    <meta content='{{.Title}} - {{ .Site.Data.er.default.categories }}  - {{ .Site.Title }}' property='og:title' />
 {{ end }}
 
 {{ define "main" }}
 <main class="center mv4 content-width ph3">
-  <h1 class="f2 fw6 heading-font"><span class="secondary-color">#</span> {{ .Data.Term }}</h1>
+  <h1 class="f2 fw6 heading-font">{{.Title}}</h1>
   {{ .Content }}
   <ul class="list-pages">
     {{ range .Data.Pages }}
